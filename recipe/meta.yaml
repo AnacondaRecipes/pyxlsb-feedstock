@@ -12,15 +12,16 @@ source:
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python
+    - wheel
+    - setuptools
   run:
-    - python >=3.6
+    - python
 
 test:
   imports:
@@ -31,10 +32,14 @@ test:
     - pip
 
 about:
-  home: https://github.com/wwwiiilll/pyxlsb
-  summary: Excel 2007-2010 Binary Workbook (xlsb) parser
+  home: https://github.com/willtrnr/pyxlsb
+  summary: Excel 2007+ Binary Workbook (xlsb) reader for Python
+  description: pyxlsb is an Excel 2007-2010 Binary Workbook (xlsb) parser for Python. The library is currently extremely limited, but functional enough for basic data extraction.
   license: LGPL-3.0-or-later
-  license_file: COPYING
+  license_family: LGPL
+  license_file: COPYING.LESSER
+  doc_url: https://github.com/willtrnr/pyxlsb
+  dev_url: https://github.com/willtrnr/pyxlsb
 
 extra:
   recipe-maintainers:
